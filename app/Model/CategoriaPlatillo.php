@@ -23,7 +23,7 @@ class CategoriaPlatillo extends AppModel {
 		'categoria' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'La categoria esta vacia',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

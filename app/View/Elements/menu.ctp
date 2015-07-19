@@ -8,19 +8,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <?php echo $this->Html->link('Restaurante', array('controller' => 'users', 'action' => 'platillos'), array('class' => 'navbar-brand' )); ?>
-          
+          <?php echo $this->Html->link('Restaurante', array('controller' => 'platillos', 'action' => 'index'), array('class' => 'navbar-brand' )); ?>
 
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-
             <?php if($current_user['role'] == 'admin'): ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><?php echo $this->Html->link('Lista Usuarios', array('controller' => 'users', 'action' => 'index')) ?></li>
                 <li><?php echo $this->Html->link('Nuevo Usuario', array('controller' => 'users', 'action' => 'add')) ?></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Sistemas</li>
+                <li><?php echo $this->Html->link('Respaldos', array('controller' => 'users', 'action' => 'backup')) ?></li>
+                <li><?php echo $this->Html->link('Auditorias', array('controller' => 'bitacoras', 'action' => 'index')) ?></li>
               </ul>
             </li>
             <?php endif; ?>
@@ -62,14 +64,17 @@
               <ul class="dropdown-menu" role="menu">
                 <li><?php echo $this->Html->link('Lista Mesas', array('controller' => 'mesas', 'action' => 'index')) ?></li>
                 <li><?php echo $this->Html->link('Nueva Mesa', array('controller' => 'mesas', 'action' => 'add')) ?></li>
-           
               </ul>
             </li>
             
-            <?php if($current_user['role'] == 'admin'): ?>
-            <li><?php echo $this->Html->link('Lista de Órdenes', array('controller' => 'ordens', 'action' => 'index')); ?></li>
-            <?php endif; ?>
-          </ul>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ordenes<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><?php echo $this->Html->link('Lista Ordenes', array('controller' => 'ordens', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nueva Orden', array('controller' => 'ordens', 'action' => 'add')) ?></li>
+              </ul>
+            </li>
           
           <?php echo $this->Form->create('Platillo', array('type' => 'GET', 'class' => 'navbar-form navbar-left', 'url' => array('controller' => 'platillos', 'action' => 'search'))); ?>
           <div class="form-group">
@@ -79,13 +84,11 @@
           <?php echo $this->Form->end(); ?>
           
           <?php echo $this->Html->link('Pedidos', array('controller' => 'pedidos', 'action' => 'view'), array('class' => 'btn btn-success navbar-btn') ); ?>
-          
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <?php echo $this->Html->link('Salir', array('controller' => 'users', 'action' => 'logout')); ?>
               </li>
-            </ul>          
-          
+            </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

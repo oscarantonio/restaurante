@@ -1,4 +1,5 @@
 <div class="page-header">
+	<?php echo $this->Html->image('restaurant1.jpg', array('alt' => 'Ahumar', 'width'=>'10%')); ?>
 	<h2><?php echo __('Cocineros'); ?></h2>
 </div>
 

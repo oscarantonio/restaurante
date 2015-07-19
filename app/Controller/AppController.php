@@ -31,7 +31,7 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
+
     public $components = array(
         'Session',
         'Auth' => array(
@@ -69,4 +69,19 @@ class AppController extends Controller {
         return false;
     }
     
+    public function traducir($palabra) {
+		$diccionario = array( 
+			'users' => 'usuarios',
+			'add' => 'agregar',
+			'delete' => 'eliminar',
+			'index' => 'visualizar',
+			'view'  => 'visualizar',
+			'edit' => 'editar',
+			'backup' => 'respaldar',
+			'dump' => 'respaldar',
+			'search' => 'buscar',
+			'categoria_platillos' => 'Categorias',
+		);
+		return array_key_exists( $palabra , $diccionario) ? $diccionario[ $palabra ] : $palabra;
+	}
 }

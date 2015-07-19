@@ -137,4 +137,15 @@ class MeserosController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+	public function afterFilter()
+	{
+		$data['Bitacora']['user'] = $this->Auth->user()['fullname'];
+		$data['Bitacora']['controller'] = parent::traducir( $this->params['controller'] ); 
+		$data['Bitacora']['actions'] = parent::traducir( $this->params['action'] );
+		$this->loadModel('Bitacora');
+		$this->Bitacora->create();
+		$this->Bitacora->save($data);
+	}
+
 }
